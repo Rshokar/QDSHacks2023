@@ -3,7 +3,6 @@ import './App.css';
 
 function App() {
 
-  console.log(process.env.REACT_APP_NOT_SECRET_CODE);
   return (
     <div className="App">
       <header className="App-header">
