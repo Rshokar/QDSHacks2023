@@ -1,53 +1,53 @@
 export const data01 = [
   {
-    "name": "Group A",
-    "value": 400
+    "name": "Non-Productive",
+    "value": 34.7
   },
   {
-    "name": "Group B",
-    "value": 300
+    "name": "In-Transit",
+    "value": 53.7
   },
   {
-    "name": "Group C",
-    "value": 300
+    "name": "At Shovel",
+    "value": 9.1
   },
   {
-    "name": "Group D",
-    "value": 200
-  },
-  {
-    "name": "Group E",
-    "value": 278
-  },
-  {
-    "name": "Group F",
-    "value": 189
+    "name": "At Dump",
+    "value": 2.6
   }
 ];
 
 export const data02 = [
   {
-    "name": "Group A",
-    "value": 2400
+    "name": "Non-productive",
+    "value": 34.7
   },
   {
-    "name": "Group B",
-    "value": 4567
+    "name": "Hauling",
+    "value": 31.5
   },
   {
-    "name": "Group C",
-    "value": 1398
+    "name": "Empty",
+    "value": 22.2
   },
   {
-    "name": "Group D",
-    "value": 9800
+    "name": "Truck Loading",
+    "value": 4.8
   },
   {
-    "name": "Group E",
-    "value": 3908
+    "name": "Queue at LU",
+    "value": 3.2
   },
   {
-    "name": "Group F",
-    "value": 4800
+    "name": "Spot at LU",
+    "value": 1.1
+  },
+  {
+    "name": "Dumping",
+    "value": 1.6
+  },
+  {
+    "name": "Queueing at dump",
+    "value": 1.0
   }
 ];
