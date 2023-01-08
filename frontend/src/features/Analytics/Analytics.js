@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Row, Col } from 'antd';
 
 import StatCard from '../../components/StatCard';
@@ -8,8 +9,11 @@ import RouteCard from '../../components/RouteCard';
 import FilterDropdown from '../../components/FilterDropdown';
 
 import { Container } from './styled';
+import { filterOpts } from './constants';
 
 const Analytics = () => {
+    const [filter, setFilter] = useState(filterOpts[0]);
+
     return (
         <Container>
             <Row gutter={16}>
@@ -50,8 +54,14 @@ const Analytics = () => {
 
             <Row gutter={16}>
                 <Col span={12} className="filter-group">
-                    {/* <FilterDropdown text="Filter by Truck" />
-                    <FilterDropdown text="Truck ID" /> */}
+                    <FilterDropdown 
+                        text="Filter by"
+                        options={filterOpts}
+                        onSelectionChanged={(s) => setFilter(s)}
+                    />
+                    {filter === filterOpts[0] 
+                        ? <FilterDropdown text="Truck ID" />
+                        : <FilterDropdown text="Type ID" />}
                 </Col>
                 <Col span={12}>
                     <OverviewBar/>

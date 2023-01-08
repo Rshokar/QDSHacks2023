@@ -19,10 +19,10 @@ const NavBar = () => {
                 navigate('/');
                 setButton(ANALYTICS);
             }}>
-                <img style={style.img} src={AnalyticsIcon} />
+                <img style={style.img} src={AnalyticsIcon} alt="analytics page" />
             </div>
             <div style={button === LAMP ? style.selectedIcon : style.icon}>
-                <img style={style.img} src={LampIcon} onClick={() => {
+                <img style={style.img} src={LampIcon} alt="insights page" onClick={() => {
                     navigate('insights');
                     setButton(LAMP);
                 }
@@ -35,7 +35,7 @@ const NavBar = () => {
 const style = {
     container: {
         minWidth: '90px',
-        backgroundColor: process.env.REACT_APP_NAVBAR_COLOR,
+        backgroundColor:"#474747",
         height: '100vh',
         display: 'flex',
         flexDirection: 'column-reverse'

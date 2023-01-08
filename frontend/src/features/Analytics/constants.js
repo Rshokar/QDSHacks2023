@@ -1,0 +1,1 @@
+export const filterOpts = ['truck', 'truck type'];
