@@ -1,26 +1,35 @@
 export const data01 = [
     {
-        "name": "efficiency percentile",
-        "min": 28,
-        "avg": 48,
-        "max": 24
-    },
+        "name": "efficiency",
+        "min": 0.81,
+        "avg": 2.33,
+        "max": 4.44
+    }
+]
+
+export const data02 = [
     {
-        "name": "time percentile",
-        "min": 24,
-        "avg": 38,
-        "max": 38,
-    },
+        "name": "time",
+        "min": 0.3,
+        "avg": 0.8,
+        "max": 1.8,
+    }
+]
+
+export const data03 = [
     {
-        "name": "load percentile",
-        "min": 59,
-        "avg": 21,
-        "max": 20,
-    },
+        "name": "load",
+        "min": 174,
+        "avg": 296,
+        "max": 204,
+    }
+]
+
+export const data04 = [
     {
-        "name": "fuel rate percentile",
-        "min": 82,
-        "avg": 9,
-        "max": 9
+        "name": "fuel rate",
+        "min": 202,
+        "avg": 204,
+        "max": 206
     }
 ]

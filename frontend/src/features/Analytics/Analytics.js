@@ -97,7 +97,9 @@ const Analytics = () => {
                 </Col>
 
                 <Col span={12} gutter={16} className="main-right">
-                    <HorizontalBar className="upper" />
+                    <div style={{height: "400px"}}>
+                        <HorizontalBar className="upper" />
+                    </div>
 
                     <Row gutter={16} className="lower">
                         <Col span={12}>
