@@ -10,6 +10,7 @@ export const StyledCard = styled(Card)`
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        font-size: clamp(0.75rem, 0.75vw, 1rem);;
     }
 
     .big {

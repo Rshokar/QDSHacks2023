@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
+
+import { CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
 import { Row, Col } from 'antd';
+
 import dayjs from 'dayjs';
 import moment from 'moment';
 
@@ -30,7 +33,6 @@ const Analytics = () => {
     }, [filter, dateFilter]);
 
     const renderGlobalStats = (data) => data.map((d) => {
-        console.log(kpi[d.label]);
         return (
             <Col span={6}>
                 <StatCard
@@ -92,10 +94,20 @@ const Analytics = () => {
                 <Col span={12} gutter={16} className="main-right">
                     <Row gutter={16} className="upper">
                         <Col span={12}>
-                            <RouteCard title="best route" route={testData.bestRoute}/>
+                            <RouteCard 
+                                title="best route"
+                                route={testData.bestRoute}
+                                icon={<CheckCircleOutlined />}
+                                color="#198754"
+                            />
                         </Col>
                         <Col span={12}>
-                            <RouteCard title="worst route" route={testData.worstRoute}/>
+                            <RouteCard
+                                title="worst route"
+                                route={testData.worstRoute}
+                                icon={<CloseCircleOutlined/>}
+                                color="#dc3545"
+                            />
                         </Col>
                     </Row>
 
