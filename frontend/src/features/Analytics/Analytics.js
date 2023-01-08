@@ -31,6 +31,16 @@ const Analytics = () => {
     const [globalData, setGlobalData] = useState(null);
     const [localData, setLocalData] = useState(testData.kpi);
     const [barData, setBarData] = useState(null);
+    const [bestRoute, setBestRoute] = useState({
+        shovel: 0,
+        dump: 0,
+        avg: 0
+    });
+    const [worstRoute, setWorstRoute] = useState({
+        shovel: 0,
+        dump: 0,
+        avg: 0
+    });
 
     useEffect(() => {
         // TODO:
@@ -79,6 +89,19 @@ const Analytics = () => {
 
             console.log(result);
             setLocalData(result);
+
+            setBestRoute({
+                shovel: doc[0].best_shovel_id,
+                dump: doc[0].best_dump_id,
+                avg: round(doc[0].best_efficiency)
+            })
+            setWorstRoute({
+                shovel: doc[0].worst_shovel_id,
+                dump: doc[0].worst_dump_id,
+                avg: round(doc[0].worst_efficiency)
+            })
+
+
         }
 
         run();
@@ -200,7 +223,7 @@ const Analytics = () => {
                 </Col>
 
                 <Col span={12} gutter={16} className="main-right">
-                    <div style={{height: "400px"}}>
+                    <div style={{ height: "400px" }}>
                         <HorizontalBar className="upper" />
                     </div>
 
@@ -208,7 +231,7 @@ const Analytics = () => {
                         <Col span={12}>
                             <RouteCard
                                 title="best route"
-                                route={testData.bestRoute}
+                                route={bestRoute}
                                 icon={<CheckCircleOutlined />}
                                 color="#198754"
                             />
@@ -217,7 +240,7 @@ const Analytics = () => {
                         <Col span={12}>
                             <RouteCard
                                 title="worst route"
-                                route={testData.worstRoute}
+                                route={worstRoute}
                                 icon={<CloseCircleOutlined />}
                                 color="#dc3545"
                             />
