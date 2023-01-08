@@ -1,5 +1,5 @@
 
-import AnalyticsController from "../../controllers/AnalyticsController";
+import Controller from "../../controllers/Controller";
 import { Row, Col } from 'antd';
 // import StatCard from '../../components/StatCard';
 // import { Container } from './styled';
