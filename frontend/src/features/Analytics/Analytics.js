@@ -5,6 +5,7 @@ import { Row, Col } from 'antd';
 import StatCard from '../../components/StatCard';
 import StatusPie from '../../components/StatusPie';
 import StatusBar from '../../components/StatusBar';
+import HorizontalBar from '../../components/HorizontalBar';
 import OverviewBar from '../../components/OverviewBar';
 import RouteCard from '../../components/RouteCard';
 import FilterDropdown from '../../components/FilterDropdown';
@@ -78,7 +79,7 @@ const Analytics = () => {
                 </Col>
 
                 <Col span={12} gutter={16} className="main-right">
-                    <StatusBar className="upper" />
+                    <HorizontalBar className="upper" />
 
                     <Row gutter={16} className="lower">
                         <Col span={12}>

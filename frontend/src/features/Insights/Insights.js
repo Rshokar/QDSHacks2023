@@ -7,7 +7,9 @@ import Dump from '../../assets/dump.png';
 import DestinationDropdown from '../../components/DestinationDropdown';
 import InsightResult from '../../components/InsightResult';
 import StatCard from '../../components/StatCard';
+import { VerticalBar1, VerticalBar2, VerticalBar3, VerticalBar4 } from '../../components/VerticalBar';
 import TiltedHeader from '../../components/TiltedHeader';
+import BarLegend from '../../components/BarLegend';
 
 import { Container } from './styled';
 import { routes } from './constants';
@@ -69,32 +71,42 @@ const Insights = () => {
 
                 <Col span={18}>
                     <Row gutter={16}>
-                            <Col span={6}>
-                                <StatCard
-                                    title="efficiency"
-                                    value="21"
-                                    unit="t / L" />
-                            </Col>
-                            <Col span={6}>
-                                <StatCard
-                                    title="time per round"
-                                    value="22"
-                                    unit="hours" />
-                            </Col>
-                            <Col span={6}>
-                                <StatCard
-                                    title="load per round"
-                                    value="23"
-                                    unit="tonnes" />
-                            </Col>
-                            <Col span={6}>
-                                <StatCard
-                                    title="fuel rate"
-                                    value="100"
-                                    unit="L / hr" />
-                            </Col>
-                        </Row>
-                    </Col>
+                        <Col span={2}>
+                            <BarLegend 
+                                color={`${process.env.REACT_APP_PRIMARY_COLOR}`}
+                                label="average"
+                                width="24px"
+                                height="12px"
+                            />
+                            <BarLegend 
+                                color={`${process.env.REACT_APP_SECONDARY_COLOR}`}
+                                label="projected"
+                                width="24px"
+                                height="12px"
+                            />
+                        </Col>
+                        <Col span={4}>
+                            <div style={{width: "200px", height: "150px"}}>
+                                <VerticalBar1 />
+                            </div>
+                        </Col>
+                        <Col span={4}>
+                            <div style={{width: "200px", height: "150px"}}>
+                                <VerticalBar2 />
+                            </div>
+                        </Col>
+                        <Col span={4}>
+                            <div style={{width: "200px", height: "150px"}}>
+                                <VerticalBar3 />
+                            </div>
+                        </Col>
+                        <Col span={4}>
+                            <div style={{width: "200px", height: "150px"}}>
+                                <VerticalBar4 />
+                            </div>
+                        </Col>
+                    </Row>
+                </Col>
             </Row>
         </Container>
     )
