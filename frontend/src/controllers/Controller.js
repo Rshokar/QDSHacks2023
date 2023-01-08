@@ -7,23 +7,24 @@ class Controller {
     ROUTES_TABLE;
     ANALYTICS_SUMMARY;
     ANALYTICS_TABLE;
+    ANALYTICS_OVERALL;
 
     constructor() {
         this.ROUTES_TABLE = "routes";
         this.ANALYTICS_SUMMARY = "analytics_summary";
-        this.ANALYTICS_TABLE = "analytics"
+        this.ANALYTICS_TABLE = "analytics";
+        this.ANALYTICS_OVERALL = "analytics_overall";
     }
 
 
     /**
-     * @param { Number | undefined } truckId 
-     * @param { String | undefined } date 
+     * @param { Number | String } bucketId 
+     * @param { Number | String } dumpId 
      * @returns undefined or a docuemnt
      */
     async getRoutes(bucketId, dumpId) {
-
         if (!bucketId || !dumpId)
-            throw Error("BucketId and DumpId is required");
+            throw Error("bucketId and dumpId is required");
 
         var docRef = doc(db, this.ROUTES_TABLE, "route_" + bucketId + dumpId);
         const docSnap = await getDoc(docRef);
@@ -34,10 +35,10 @@ class Controller {
     }
 
     /**
- * @param { Number | undefined } truckId 
- * @param { String | undefined } date 
- * @returns An array of found docuemnts
- */
+    * @param { Number | String | undefined } truckId 
+    * @param { String | undefined } date 
+    * @returns An array of found docuemnts
+    */
     async getAnalytics(truckId, date) {
         var q = query(collection(db, this.ANALYTICS_TABLE));
 
@@ -49,7 +50,7 @@ class Controller {
             q = this._getTruckIdAndDateQuery(truckId, date);
         }
 
-        return await this.makeQuery(q);
+        return await this._makeQuery(q);
     }
 
     /**
@@ -59,7 +60,7 @@ class Controller {
     async getAnalyticsSummary(date) {
 
         if (!date)
-            throw Error("Date is a required field");
+            throw Error("date is a required field");
 
         var docRef = doc(db, this.ANALYTICS_SUMMARY, date);
         const docSnap = await getDoc(docRef);
@@ -70,6 +71,18 @@ class Controller {
         return undefined;
     }
 
+    /**
+     * @param { Number | String } truckId 
+     */
+    async getAnalyticsOverall(truckId) {
+        if (!truckId)
+            throw Error("truckId is a required field")
+
+        var q = query(collection(db, this.ANALYTICS_OVERALL), where("TRUCK_ID", "==", truckId));
+
+        return await this._makeQuery(q)
+    }
+
     _getTruckIdQuery(truckId) {
         return query(collection(db, this.ANALYTICS_TABLE), where("TRUCK_ID", "==", truckId))
     }
@@ -78,7 +91,7 @@ class Controller {
         return query(collection(db, this.ANALYTICS_TABLE), where("TRUCK_ID", "==", truckId), where("LOAD_DATE", "==", date))
     }
 
-    async makeQuery(query) {
+    async _makeQuery(query) {
 
         const querySnapshot = await getDocs(query);
 
