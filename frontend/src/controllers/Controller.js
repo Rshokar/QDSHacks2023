@@ -2,6 +2,7 @@ import { getDocs } from "firebase/firestore";
 class Controller {
 
     async makeQuery(query) {
+
         const querySnapshot = await getDocs(query);
 
         if (querySnapshot.empty) {

@@ -1,18 +1,23 @@
 import Controller from "./Controller";
 import { db } from "../firebase";
-import { collection, query, where, getDocs, getDoc } from "@firebase/firestore";
+import { collection, query, where, } from "@firebase/firestore";
 
 class AnalyticsController extends Controller {
 
+    ROUTES_TABLE;
 
+    constructor() {
+        super();
+        this.ROUTES_TABLE = "route_1-6_0409";
+    }
 
     /**
-     * @param { Number } truckId 
-     * @param { String } date 
+     * @param { Number | undefined } truckId 
+     * @param { String | undefined } date 
      * @returns 
      */
-    async getData(truckId, date) {
-        var q = query(collection(db, 'route_1-6_0409'));
+    async getRoutes(truckId, date) {
+        var q = query(collection(db, this.ROUTES_TABLE));
         if (truckId) {
             q = this._getTruckIdQuery(truckId);
         }
@@ -20,20 +25,21 @@ class AnalyticsController extends Controller {
         if (truckId && date) {
             q = this._getTruckIdAndDateQuery(truckId, date);
         }
-        console.log(truckId, date);
-        console.log("Hello");
 
         const docs = await super.makeQuery(q);
         return docs;
     }
 
     _getTruckIdQuery(truckId) {
-        return query(collection(db, 'route_1-6_0409'), where("TRUCK_ID", "==", truckId))
+        return query(collection(db, this.ROUTES_TABLE), where("TRUCK_ID", "==", truckId))
     }
 
     _getTruckIdAndDateQuery(truckId, date) {
-        return query(collection(db, 'route_1-6_0409'), where("TRUCK_ID", "==", truckId), where("LOAD_DATE", "==", date))
+        return query(collection(db, this.ROUTES_TABLE), where("TRUCK_ID", "==", truckId), where("LOAD_DATE", "==", date))
     }
+
+
+
 
 
 }
