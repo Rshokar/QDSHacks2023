@@ -8,6 +8,38 @@ export const Container = styled.div`
     flex-direction: column;
     flex: 1;
     background-color: #e8e9ea;
-    padding: 10px 0;
+    padding: 20px 30px;
     overflow: hidden;
+
+    .title {
+            position: relative;
+
+            h1 {
+                position: relative;
+                text-transform: uppercase;
+                font-weight: 900;
+                text-align: left;
+                padding-left: 1rem;
+
+                &::before {
+                    position: absolute;
+                    content: "";
+                    width: 0.25rem;
+                    height: 125%;
+                    background-color: ${secondaryColor};
+                    left: 0;
+                }
+            }
+        }
+    
+    .main-content {
+        flex: 1;
+        display: flex;
+        align-items: flex-end;
+        padding: 1.5rem 0;
+
+        .mid {
+            align-self: flex-start;
+        }
+    }
 `;

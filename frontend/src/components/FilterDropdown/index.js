@@ -50,6 +50,7 @@ const FilterDropdown = ({ text, icon, options, onSelectionChanged }) => {
 					menu={{
 						items: opts || testItems,
 						onClick: handleSelect,
+						selectedKeys: [selected],
 					}}
 				>
 					<Button type="default" className="dropdown-btn">{selected}</Button>
