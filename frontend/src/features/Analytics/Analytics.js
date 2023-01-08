@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Row, Col } from 'antd';
+import dayjs from 'dayjs';
 
-
+import TiltedButton from '../../components/TiltedButton';
 import StatCard from '../../components/StatCard';
 import StatusPie from '../../components/StatusPie';
 import StatusBar from '../../components/StatusBar';
@@ -10,45 +11,53 @@ import RouteCard from '../../components/RouteCard';
 import FilterDropdown from '../../components/FilterDropdown';
 
 import { Container } from './styled';
-import { filterOpts, testData } from './constants';
+import { filterOpts, kpi, testData } from './constants';
 
 const Analytics = () => {
+    const [dateFilter, setDateFilter] = useState('');
     const [filter, setFilter] = useState(filterOpts[0]);
+    const [id, setId] = useState(1);
+    const [date, setDate] = useState(null);
+    const [globalData, setGlobalData] = useState(null);
+    const [localData, setLocalData] = useState(null);
+
+    useEffect(() => {
+        setDate(dateFilter ? dayjs(dateFilter) : null);
+    }, [dateFilter]);
+
+    useEffect(() => {
+    }, [filter, dateFilter]);
+
+    const renderGlobalStats = (data) => data.map((d) => {
+        return (
+            <Col span={6}>
+                <StatCard
+                    title={d.label}
+                    value={d.value}
+                    unit={kpi[d.label]["unitLong"] || kpi[d.label]["unit"]} />
+            </Col>
+        );
+    });
 
     return (
         <Container>
             <Row gutter={16}>
-                <Col span={9}>Day Filter</Col>
-                <Col span={3} className="date">
-                    <div class="month">DEC</div>
-                    <div class="day">1</div>
+                <Col span={9}>
+                    <TiltedButton onClick={(d) => setDateFilter(d)} />
                 </Col>
+
+                <Col span={3} className="date-wrapper">
+                    {date && 
+                        <div className="date">
+                            <div class="month">APR</div>
+                            <div class="day">{date.get("date")}</div>
+                        </div>
+                    }
+                </Col>
+                
                 <Col span={12}>
                     <Row gutter={16}>
-                        <Col span={6}>
-                            <StatCard
-                                title="efficiency"
-                                value="21"
-                                unit="t / L" />
-                        </Col>
-                        <Col span={6}>
-                            <StatCard
-                                title="time per round"
-                                value="22"
-                                unit="hours" />
-                        </Col>
-                        <Col span={6}>
-                            <StatCard
-                                title="load per round"
-                                value="23"
-                                unit="tonnes" />
-                        </Col>
-                        <Col span={6}>
-                            <StatCard
-                                title="fuel rate"
-                                value="100"
-                                unit="L / hr" />
-                        </Col>
+                        {renderGlobalStats(globalData || testData.kpi)}
                     </Row>
                 </Col>
             </Row>
