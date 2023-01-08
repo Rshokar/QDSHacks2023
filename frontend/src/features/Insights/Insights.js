@@ -13,20 +13,21 @@ import BarLegend from '../../components/BarLegend';
 
 import { Container } from './styled';
 import { routes, kpi, testData } from './constants';
+import Controller from '../../controllers/Controller';
 
 const Insights = () => {
     const shovelSites = Object.keys(routes);
+    const con = new Controller();
 
     const [loading, setLoading] = useState(false);
     const [shovel, setShovel] = useState(shovelSites[0]);
     const [dumpSites, setDumpsites] = useState(routes[shovel]);
     const [dump, setDump] = useState(null);
-    const [data, setData] = useState(testData.kpi);
+    const [data, setData] = useState(undefined);
 
     useEffect(() => {
         setDumpsites(routes[shovel]);
         setDump(null);
-        setLoading(true);
     }, [shovel]);
 
     useEffect(() => {
@@ -34,7 +35,18 @@ const Insights = () => {
     }, [data])
 
     useEffect(() => {
-        // TODO: refetch data
+        const run = async () => {
+            const d = await con.getInsights(shovel, dump);
+            setData(d);
+            setLoading(false);
+        }
+
+        if (dump) {
+            setLoading(true);
+            run();
+        } else {
+            setData(undefined);
+        }
     }, [dump]);
 
     const renderStats = (data) => data.map((d) => {
@@ -45,10 +57,12 @@ const Insights = () => {
                     title={d.label}
                     value={d.value}
                     unit={kpi[d.label]["unitLong"] || kpi[d.label]["unit"]}
-                    icon={kpi[d.label]["icon"]}/>
+                    icon={kpi[d.label]["icon"]} />
             </Col>
         );
     });
+
+    const round = (num) => Math.round(num * 100) / 100;
 
     return (
         <Container>
@@ -67,11 +81,11 @@ const Insights = () => {
                             defOpt={true}
                             options={shovelSites}
                             opt={shovel}
-                            onSelectionChanged={(s) => setShovel(s)}/>
+                            onSelectionChanged={(s) => setShovel(s)} />
                     </Col>
 
                     <Col span={12} className="mid">
-                        <InsightResult />
+                        <InsightResult loading={loading} result={data?.best_truck.id}/>
                     </Col>
 
                     <Col span={6}>
@@ -80,53 +94,61 @@ const Insights = () => {
                             icon={Dump}
                             options={dumpSites}
                             opt={dump}
-                            onSelectionChanged={(s) => setDump(s)}/>
+                            onSelectionChanged={(s) => setDump(s)} />
                     </Col>
-                </Row>                
+                </Row>
             </div>
 
-            <Row gutter={16} style={{paddingBottom: "16px"}}>
-                <Col span={6}>
-                    <TiltedHeader text="projected" />
+            <Row gutter={24} style={{ paddingBottom: "16px" }} className="bars">
+                <Col span={2}>
+                    <BarLegend
+                        color={`${process.env.REACT_APP_PRIMARY_COLOR}`}
+                        label="average"
+                        width="24px"
+                        height="12px"
+                    />
+                    <BarLegend
+                        color={`${process.env.REACT_APP_SECONDARY_COLOR}`}
+                        label="projected"
+                        width="24px"
+                        height="12px"
+                    />
                 </Col>
-
-                <Col span={18}>
-                    <Row gutter={16}>
-                        <Col span={2}>
-                            <BarLegend 
-                                color={`${process.env.REACT_APP_PRIMARY_COLOR}`}
-                                label="average"
-                                width="24px"
-                                height="12px"
-                            />
-                            <BarLegend 
-                                color={`${process.env.REACT_APP_SECONDARY_COLOR}`}
-                                label="projected"
-                                width="24px"
-                                height="12px"
-                            />
-                        </Col>
-                        <Col span={4}>
-                            <div style={{width: "200px", height: "150px"}}>
-                                <VerticalBar1 />
-                            </div>
-                        </Col>
-                        <Col span={4}>
-                            <div style={{width: "200px", height: "150px"}}>
-                                <VerticalBar2 />
-                            </div>
-                        </Col>
-                        <Col span={4}>
-                            <div style={{width: "200px", height: "150px"}}>
-                                <VerticalBar3 />
-                            </div>
-                        </Col>
-                        <Col span={4}>
-                            <div style={{width: "200px", height: "150px"}}>
-                                <VerticalBar4 />
-                            </div>
-                        </Col>
-                    </Row>
+                <Col span={4}>
+                    <div style={{ width: "200px", height: "200px" }}>
+                        <VerticalBar1 data={data && [{
+                            projected: round(data.best_truck.efficiency),
+                            name: 'Efficiency',
+                            avg: round(data.efficiency)
+                        }]} />
+                    </div>
+                </Col>
+                <Col span={4}>
+                    <div style={{ width: "200px", height: "200px" }}>
+                        <VerticalBar2 data={data && [{
+                            projected: round(data.best_truck.time_per_round),
+                            name: 'Time Per Round',
+                            avg: round(data.time_per_round)
+                        }]} />
+                    </div>
+                </Col>
+                <Col span={4}>
+                    <div style={{ width: "200px", height: "200px" }}>
+                        <VerticalBar3 data={data && [{
+                            projected: round(data.best_truck.load_per_round),
+                            name: 'Load Per Round',
+                            avg: round(data.load_per_round)
+                        }]} />
+                    </div>
+                </Col>
+                <Col span={4}>
+                    <div style={{ width: "200px", height: "200px" }}>
+                        <VerticalBar4 data={data && [{
+                            projected: round(data.best_truck.fuel_rate_per_round),
+                            name: 'Fuel Rate Per Round',
+                            avg: round(data.fuel_rate_per_round)
+                        }]} />
+                    </div>
                 </Col>
             </Row>
         </Container>

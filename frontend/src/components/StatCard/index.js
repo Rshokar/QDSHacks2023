@@ -1,5 +1,10 @@
-import { StyledCard } from './styled';
+import { useEffect, useRef } from 'react';
+import { animate } from 'framer-motion';
+
 import Icon, { StarFilled } from '@ant-design/icons';
+
+import { StyledCard } from './styled';
+
 
 const StatCard = ({ title, value, unit, icon }) => {
     return (
@@ -11,7 +16,7 @@ const StatCard = ({ title, value, unit, icon }) => {
         ]}>
             <div className="value">{value}</div>
             <div className="unit">{unit}</div>
-        </StyledCard>);
+        </StyledCard>)
 }
 
 export default StatCard;

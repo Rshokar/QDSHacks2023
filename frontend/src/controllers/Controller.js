@@ -23,11 +23,13 @@ class Controller {
      * @returns undefined or a docuemnt
      */
     async getInsights(shovelId, dumpId) {
+
         if (!shovelId || !dumpId)
             throw Error("shovelId and dumpId is required");
 
         var docRef = doc(db, this.INSIGHTS, "route_" + shovelId + "_" + dumpId);
         const docSnap = await getDoc(docRef);
+
         if (docSnap.exists()) {
             return docSnap.data();
         }
@@ -73,6 +75,7 @@ class Controller {
 
     /**
      * @param { Number | String } truckId 
+     * @returns An array of found docuemnts
      */
     async getAnalyticsOverall(truckId) {
         if (!truckId)
