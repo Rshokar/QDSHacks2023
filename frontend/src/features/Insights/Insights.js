@@ -28,7 +28,6 @@ const Insights = () => {
     useEffect(() => {
         setDumpsites(routes[shovel]);
         setDump(null);
-        setLoading(true);
     }, [shovel]);
 
     useEffect(() => {
@@ -38,11 +37,16 @@ const Insights = () => {
     useEffect(() => {
         const run = async () => {
             const d = await con.getInsights(shovel, dump);
-            console.log(d);
             setData(d);
+            setLoading(false);
         }
-        run();
-        // TODO: refetch data
+
+        if (dump) {
+            setLoading(true);
+            run();
+        } else {
+            setData(undefined);
+        }
     }, [dump]);
 
     const renderStats = (data) => data.map((d) => {
@@ -81,7 +85,7 @@ const Insights = () => {
                     </Col>
 
                     <Col span={12} className="mid">
-                        <InsightResult />
+                        <InsightResult loading={loading} result={data?.best_truck.id}/>
                     </Col>
 
                     <Col span={6}>
@@ -95,64 +99,56 @@ const Insights = () => {
                 </Row>
             </div>
 
-            <Row gutter={16} style={{ paddingBottom: "16px" }}>
-                <Col span={6}>
-                    <TiltedHeader text="projected" />
+            <Row gutter={24} style={{ paddingBottom: "16px" }} className="bars">
+                <Col span={2}>
+                    <BarLegend
+                        color={`${process.env.REACT_APP_PRIMARY_COLOR}`}
+                        label="average"
+                        width="24px"
+                        height="12px"
+                    />
+                    <BarLegend
+                        color={`${process.env.REACT_APP_SECONDARY_COLOR}`}
+                        label="projected"
+                        width="24px"
+                        height="12px"
+                    />
                 </Col>
-
-                <Col span={18}>
-                    <Row gutter={16}>
-                        <Col span={2}>
-                            <BarLegend
-                                color={`${process.env.REACT_APP_PRIMARY_COLOR}`}
-                                label="average"
-                                width="24px"
-                                height="12px"
-                            />
-                            <BarLegend
-                                color={`${process.env.REACT_APP_SECONDARY_COLOR}`}
-                                label="projected"
-                                width="24px"
-                                height="12px"
-                            />
-                        </Col>
-                        <Col span={4}>
-                            <div style={{ width: "200px", height: "150px" }}>
-                                <VerticalBar1 data={data && [{
-                                    projected: round(data.best_truck.efficiency),
-                                    name: 'Efficiency',
-                                    avg: round(data.efficiency)
-                                }]} />
-                            </div>
-                        </Col>
-                        <Col span={4}>
-                            <div style={{ width: "200px", height: "150px" }}>
-                                <VerticalBar2 data={data && [{
-                                    projected: round(data.best_truck.time_per_round),
-                                    name: 'Time Per Round',
-                                    avg: round(data.time_per_round)
-                                }]} />
-                            </div>
-                        </Col>
-                        <Col span={4}>
-                            <div style={{ width: "200px", height: "150px" }}>
-                                <VerticalBar3 data={data && [{
-                                    projected: round(data.best_truck.load_per_round),
-                                    name: 'Load Per Round',
-                                    avg: round(data.load_per_round)
-                                }]} />
-                            </div>
-                        </Col>
-                        <Col span={4}>
-                            <div style={{ width: "200px", height: "150px" }}>
-                                <VerticalBar4 data={data && [{
-                                    projected: round(data.best_truck.fuel_rate_per_round),
-                                    name: 'Fuel Rate Per Round',
-                                    avg: round(data.fuel_rate_per_round)
-                                }]} />
-                            </div>
-                        </Col>
-                    </Row>
+                <Col span={4}>
+                    <div style={{ width: "200px", height: "200px" }}>
+                        <VerticalBar1 data={data && [{
+                            projected: round(data.best_truck.efficiency),
+                            name: 'Efficiency',
+                            avg: round(data.efficiency)
+                        }]} />
+                    </div>
+                </Col>
+                <Col span={4}>
+                    <div style={{ width: "200px", height: "200px" }}>
+                        <VerticalBar2 data={data && [{
+                            projected: round(data.best_truck.time_per_round),
+                            name: 'Time Per Round',
+                            avg: round(data.time_per_round)
+                        }]} />
+                    </div>
+                </Col>
+                <Col span={4}>
+                    <div style={{ width: "200px", height: "200px" }}>
+                        <VerticalBar3 data={data && [{
+                            projected: round(data.best_truck.load_per_round),
+                            name: 'Load Per Round',
+                            avg: round(data.load_per_round)
+                        }]} />
+                    </div>
+                </Col>
+                <Col span={4}>
+                    <div style={{ width: "200px", height: "200px" }}>
+                        <VerticalBar4 data={data && [{
+                            projected: round(data.best_truck.fuel_rate_per_round),
+                            name: 'Fuel Rate Per Round',
+                            avg: round(data.fuel_rate_per_round)
+                        }]} />
+                    </div>
                 </Col>
             </Row>
         </Container>

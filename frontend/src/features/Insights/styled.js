@@ -44,4 +44,9 @@ export const Container = styled.div`
             display: flex;
         }
     }
+
+    .bars {
+        display: flex;
+        justify-content: center;
+    }
 `;
