@@ -9,7 +9,7 @@ export const Container = styled.div`
     font-size: 1rem;
 
     img {
-        max-width: 40%;
+        max-width: 150px;
         padding-bottom: 1.5rem;
     }
 

@@ -7,6 +7,7 @@ import Dump from '../../assets/dump.png';
 import DestinationDropdown from '../../components/DestinationDropdown';
 import InsightResult from '../../components/InsightResult';
 import StatCard from '../../components/StatCard';
+import TiltedHeader from '../../components/TiltedHeader';
 
 import { Container } from './styled';
 import { routes } from './constants';
@@ -62,7 +63,9 @@ const Insights = () => {
 
             <Row gutter={16}>
 
-                <Col span={6}>Projected</Col>
+                <Col span={6}>
+                    <TiltedHeader text="projected" />
+                </Col>
 
                 <Col span={18}>
                     <Row gutter={16}>

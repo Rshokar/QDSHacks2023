@@ -1,8 +1,12 @@
+import { Spin } from 'antd';
+
 import Truck from '../../assets/truck.png';
+
+import TiltedTwoHeader from '../../components/TiltedTwoHeader';
 
 import { Container } from './styled';
 
-const InsightResult = ({ icon, loading }) => {
+const InsightResult = ({ loading, result }) => {
   
 	return (
 			<Container>
@@ -10,7 +14,12 @@ const InsightResult = ({ icon, loading }) => {
 					<img src={Truck} alt="shiny truck go brr"/>
 				</div>
 				<div className="lower">
-					<span class="description">Most efficient truck for this route</span>
+					<div class="description">Most efficient truck for this route</div>
+					{!result 
+						? loading 
+							? <Spin size="large"/>
+							: <span>Select shovel and dump sites to proceed.</span>
+						: <TiltedTwoHeader text1="truck" text2={`#${result}`} />}
 				</div>
 			</Container>
 		);
