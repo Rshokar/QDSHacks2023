@@ -30,12 +30,14 @@ const Analytics = () => {
     }, [filter, dateFilter]);
 
     const renderGlobalStats = (data) => data.map((d) => {
+        console.log(kpi[d.label]);
         return (
             <Col span={6}>
                 <StatCard
                     title={d.label}
                     value={d.value}
-                    unit={kpi[d.label]["unitLong"] || kpi[d.label]["unit"]} />
+                    unit={kpi[d.label]["unitLong"] || kpi[d.label]["unit"]}
+                    icon={kpi[d.label]["icon"]}/>
             </Col>
         );
     });
@@ -88,7 +90,7 @@ const Analytics = () => {
                 </Col>
 
                 <Col span={12} gutter={16} className="main-right">
-                    <Row gutter={16} className="lower">
+                    <Row gutter={16} className="upper">
                         <Col span={12}>
                             <RouteCard title="best route" route={testData.bestRoute}/>
                         </Col>
@@ -97,7 +99,7 @@ const Analytics = () => {
                         </Col>
                     </Row>
 
-                    <StatusBar className="upper" />
+                    <StatusBar className="lower" />
                 </Col>
             </Row>
         </Container>

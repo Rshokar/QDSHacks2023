@@ -34,7 +34,7 @@ const FilterDropdown = ({ text, icon, options, onSelectionChanged }) => {
 	}));
 	const opts = options ? toMenuOpts(options) : testItems;
 	
-	const [selected, setSelected] = useState(opts[0].key || testItems[0].key);  
+	const [selected, setSelected] = useState(opts[0].key);
 
 	const handleSelect = ({ key }) => {
 		if (key !== selected) {
@@ -51,6 +51,7 @@ const FilterDropdown = ({ text, icon, options, onSelectionChanged }) => {
 						items: opts || testItems,
 						onClick: handleSelect,
 						selectedKeys: [selected],
+						defaultSelectedKeys: [selected],
 					}}
 				>
 					<Button type="default" className="dropdown-btn">{selected}</Button>

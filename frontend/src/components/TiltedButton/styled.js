@@ -14,6 +14,8 @@ export const Container = styled.div`
         font-weight: 800;
         color: #000;
         z-index: 999;
+        font-size: 1rem;
+        line-height: 1;
     }
 
     .bottom {

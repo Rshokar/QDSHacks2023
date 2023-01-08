@@ -10,7 +10,7 @@ export const StyledCard = styled(Card)`
 
     .ant-card-body { 
         padding: 1rem;
-        font-size: clamp(0.75rem, 1.5vw, 1.5rem);
+        font-size: clamp(1rem, 1.5vw, 1.5rem);
         line-height: 1.25;
         font-weight: 900;
     }
@@ -18,7 +18,7 @@ export const StyledCard = styled(Card)`
     .ant-card-actions li span {
         cursor: default;
         color: #000;
-        font-size: clamp(0.25rem, 1vw, 1rem);
+        font-size: clamp(0.5rem, 1vw, 1rem);
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
