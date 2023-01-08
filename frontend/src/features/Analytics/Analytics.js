@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react';
+
+import { CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
 import { Row, Col } from 'antd';
 
+import dayjs from 'dayjs';
+import moment from 'moment';
 
+import TiltedButton from '../../components/TiltedButton';
 import StatCard from '../../components/StatCard';
 import StatusPie from '../../components/StatusPie';
 import StatusBar from '../../components/StatusBar';
@@ -11,45 +16,54 @@ import RouteCard from '../../components/RouteCard';
 import FilterDropdown from '../../components/FilterDropdown';
 
 import { Container } from './styled';
-import { filterOpts } from './constants';
+import { filterOpts, kpi, truckIDs, testData } from './constants';
 
 const Analytics = () => {
+    const [dateFilter, setDateFilter] = useState('');
     const [filter, setFilter] = useState(filterOpts[0]);
+    const [id, setId] = useState(1);
+    const [date, setDate] = useState(null);
+    const [globalData, setGlobalData] = useState(null);
+    const [localData, setLocalData] = useState(null);
+
+    useEffect(() => {
+        setDate(dateFilter ? dayjs(dateFilter) : null);
+    }, [dateFilter]);
+
+    useEffect(() => {
+    }, [filter, dateFilter]);
+
+    const renderGlobalStats = (data) => data.map((d) => {
+        return (
+            <Col span={6}>
+                <StatCard
+                    title={d.label}
+                    value={d.value}
+                    unit={kpi[d.label]["unitLong"] || kpi[d.label]["unit"]}
+                    icon={kpi[d.label]["icon"]}/>
+            </Col>
+        );
+    });
 
     return (
         <Container>
             <Row gutter={16}>
-                <Col span={9}>Day Filter</Col>
-                <Col span={3} className="date">
-                    <div class="month">DEC</div>
-                    <div class="day">1</div>
+                <Col span={9}>
+                    <TiltedButton onClick={(d) => setDateFilter(d)} />
                 </Col>
+
+                <Col span={3} className="date-wrapper">
+                    {date && dateFilter &&
+                        <div className="date">
+                            <div class="month">{moment(dateFilter, "YYYY-MM-DD").format("MMM")}</div>
+                            <div class="day">{date.get("date")}</div>
+                        </div>
+                    }
+                </Col>
+                
                 <Col span={12}>
                     <Row gutter={16}>
-                        <Col span={6}>
-                            <StatCard
-                                title="efficiency"
-                                value="21"
-                                unit="t / L" />
-                        </Col>
-                        <Col span={6}>
-                            <StatCard
-                                title="time per round"
-                                value="22"
-                                unit="hours" />
-                        </Col>
-                        <Col span={6}>
-                            <StatCard
-                                title="load per round"
-                                value="23"
-                                unit="tonnes" />
-                        </Col>
-                        <Col span={6}>
-                            <StatCard
-                                title="fuel rate"
-                                value="100"
-                                unit="L / hr" />
-                        </Col>
+                        {renderGlobalStats(globalData || testData.kpi)}
                     </Row>
                 </Col>
             </Row>
@@ -62,7 +76,7 @@ const Analytics = () => {
                         onSelectionChanged={(s) => setFilter(s)}
                     />
                     {filter === filterOpts[0]
-                        ? <FilterDropdown text="Truck ID" />
+                        ? <FilterDropdown text="Truck ID" options={truckIDs}/>
                         : <FilterDropdown text="Type ID" />}
                 </Col>
                 <Col span={12}>
@@ -79,16 +93,26 @@ const Analytics = () => {
                 </Col>
 
                 <Col span={12} gutter={16} className="main-right">
-                    <HorizontalBar className="upper" />
-
-                    <Row gutter={16} className="lower">
+                    <Row gutter={16} className="upper">
                         <Col span={12}>
-                            <RouteCard />
+                            <RouteCard 
+                                title="best route"
+                                route={testData.bestRoute}
+                                icon={<CheckCircleOutlined />}
+                                color="#198754"
+                            />
                         </Col>
                         <Col span={12}>
-                            <RouteCard />
+                            <RouteCard
+                                title="worst route"
+                                route={testData.worstRoute}
+                                icon={<CloseCircleOutlined/>}
+                                color="#dc3545"
+                            />
                         </Col>
                     </Row>
+
+                    <HorizontalBar className="lower" />
                 </Col>
             </Row>
         </Container>

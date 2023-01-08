@@ -1,4 +1,4 @@
-    import { Container } from './styled';
+import { Container } from './styled';
 
 const BarLegend = ({color, label, width = "2rem", height = "1rem"}) => {
 

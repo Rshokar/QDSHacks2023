@@ -20,7 +20,14 @@ export const Container = styled.div`
         flex: 4;
     }
 
+    .date-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
     .date {
+        position: relative;
         display: flex;
         flex-direction: column;
         justify-content: center;

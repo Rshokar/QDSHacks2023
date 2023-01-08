@@ -32,14 +32,16 @@ export const Container = styled.div`
             }
         }
     
-    .main-content {
+    .main-wrapper {
         flex: 1;
         display: flex;
-        align-items: flex-end;
         padding: 1.5rem 0;
-
-        .mid {
-            align-self: flex-start;
+        justify-content: center;
+        align-items: center;
+        
+        .main-content {
+            max-width: 1000px;
+            display: flex;
         }
     }
 `;

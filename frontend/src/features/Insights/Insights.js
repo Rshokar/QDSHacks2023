@@ -12,23 +12,43 @@ import TiltedHeader from '../../components/TiltedHeader';
 import BarLegend from '../../components/BarLegend';
 
 import { Container } from './styled';
-import { routes } from './constants';
+import { routes, kpi, testData } from './constants';
 
 const Insights = () => {
     const shovelSites = Object.keys(routes);
 
+    const [loading, setLoading] = useState(false);
     const [shovel, setShovel] = useState(shovelSites[0]);
     const [dumpSites, setDumpsites] = useState(routes[shovel]);
     const [dump, setDump] = useState(null);
+    const [data, setData] = useState(testData.kpi);
 
     useEffect(() => {
         setDumpsites(routes[shovel]);
         setDump(null);
+        setLoading(true);
     }, [shovel]);
+
+    useEffect(() => {
+        data && setLoading(false);
+    }, [data])
 
     useEffect(() => {
         // TODO: refetch data
     }, [dump]);
+
+    const renderStats = (data) => data.map((d) => {
+        console.log(kpi[d.label]);
+        return (
+            <Col span={6}>
+                <StatCard
+                    title={d.label}
+                    value={d.value}
+                    unit={kpi[d.label]["unitLong"] || kpi[d.label]["unit"]}
+                    icon={kpi[d.label]["icon"]}/>
+            </Col>
+        );
+    });
 
     return (
         <Container>
@@ -38,33 +58,46 @@ const Insights = () => {
                 </div>
             </Row>
 
-            <Row className="main-content" gutter={16}>
+            <div className="main-wrapper">
+                <Row className="main-content" gutter={16}>
+                    <Col span={6}>
+                        <DestinationDropdown
+                            text="Shovel Site"
+                            icon={Shovel}
+                            defOpt={true}
+                            options={shovelSites}
+                            opt={shovel}
+                            onSelectionChanged={(s) => setShovel(s)}/>
+                    </Col>
+
+                    <Col span={12} className="mid">
+                        <InsightResult />
+                    </Col>
+
+                    <Col span={6}>
+                        <DestinationDropdown
+                            text="Dump Site"
+                            icon={Dump}
+                            options={dumpSites}
+                            opt={dump}
+                            onSelectionChanged={(s) => setDump(s)}/>
+                    </Col>
+                </Row>                
+            </div>
+
+            <Row gutter={16} style={{paddingBottom: "16px"}}>
                 <Col span={6}>
-                    <DestinationDropdown
-                        text="Shovel Site"
-                        icon={Shovel}
-                        defOpt={true}
-                        options={shovelSites}
-                        opt={shovel}
-                        onSelectionChanged={(s) => setShovel(s)}/>
+                    <TiltedHeader text="average" />
                 </Col>
 
-                <Col span={12} className="mid">
-                    <InsightResult />
-                </Col>
-
-                <Col span={6}>
-                    <DestinationDropdown
-                        text="Dump Site"
-                        icon={Dump}
-                        options={dumpSites}
-                        opt={dump}
-                        onSelectionChanged={(s) => setDump(s)}/>
+                <Col span={18}>
+                    <Row gutter={16}>
+                        {renderStats(testData.kpi)}
+                    </Row>
                 </Col>
             </Row>
 
             <Row gutter={16}>
-
                 <Col span={6}>
                     <TiltedHeader text="projected" />
                 </Col>

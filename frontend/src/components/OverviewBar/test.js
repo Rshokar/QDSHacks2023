@@ -1,88 +1,22 @@
 export const testData = [
-    {
-      "id": "temp.",
-      "ranges": [
-        29,
-        7,
-        112,
-        0,
-        120
-      ],
-      "measures": [
-        47
-      ],
-      "markers": [
-        109
-      ]
-    },
-    {
-      "id": "power",
-      "ranges": [
-        1.5879348629660655,
-        0.3286661296673234,
-        1.3918123486899336,
-        0,
-        2
-      ],
-      "measures": [
-        0.5609524268642045,
-        1.2966173389826006
-      ],
-      "markers": [
-        1.3000633576903633
-      ]
-    },
-    {
-      "id": "volume",
-      "ranges": [
-        2,
-        24,
-        4,
-        49,
-        1,
-        59,
-        0,
-        60
-      ],
-      "measures": [
-        16
-      ],
-      "markers": [
-        42
-      ]
-    },
-    {
-      "id": "cost",
-      "ranges": [
-        342127,
-        148581,
-        314387,
-        0,
-        500000
-      ],
-      "measures": [
-        406330,
-        450947
-      ],
-      "markers": [
-        470713
-      ]
-    },
-    {
-      "id": "revenue",
-      "ranges": [
-        3,
-        5,
-        3,
-        0,
-        9
-      ],
-      "measures": [
-        4
-      ],
-      "markers": [
-        5.7633587783235,
-        8.63401738517321
-      ]
-    }
-  ];
+   {
+    label: "efficiency",
+    value: 2,
+    unit: "t / L",
+   },
+   {
+    label: "time per round",
+    value: 1.5,
+    unit: "hr",
+   },
+   {
+    label: "load per round",
+    value: 3,
+    unit: "t",
+   },
+   {
+    label: "fuel rate",
+    value: 100,
+    unit: "L / hr",
+   }
+];
