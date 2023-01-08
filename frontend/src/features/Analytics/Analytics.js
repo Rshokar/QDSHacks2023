@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+import AnalyticsController from "../../controllers/AnalyticsController";
+
+
+const Analytics = () => {
+    return <div>Analytics</div>
+=======
 import { Row, Col } from 'antd';
 
 // import StatCard from '../../components/StatCard';
@@ -66,6 +73,7 @@ const Analytics = () => {
         //     </Row>
         // </Container>
     );
+>>>>>>> main
 }
 
 export default Analytics;
