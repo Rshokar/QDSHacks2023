@@ -10,7 +10,7 @@ import RouteCard from '../../components/RouteCard';
 import FilterDropdown from '../../components/FilterDropdown';
 
 import { Container } from './styled';
-import { filterOpts } from './constants';
+import { filterOpts, testData } from './constants';
 
 const Analytics = () => {
     const [filter, setFilter] = useState(filterOpts[0]);
@@ -82,10 +82,10 @@ const Analytics = () => {
 
                     <Row gutter={16} className="lower">
                         <Col span={12}>
-                            <RouteCard />
+                            <RouteCard title="best route" route={testData.bestRoute}/>
                         </Col>
                         <Col span={12}>
-                            <RouteCard />
+                            <RouteCard title="worst route" route={testData.worstRoute}/>
                         </Col>
                     </Row>
                 </Col>
