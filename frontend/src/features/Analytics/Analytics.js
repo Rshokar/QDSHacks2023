@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Row, Col } from 'antd';
 import dayjs from 'dayjs';
+import moment from 'moment';
 
 import TiltedButton from '../../components/TiltedButton';
 import StatCard from '../../components/StatCard';
@@ -11,7 +12,7 @@ import RouteCard from '../../components/RouteCard';
 import FilterDropdown from '../../components/FilterDropdown';
 
 import { Container } from './styled';
-import { filterOpts, kpi, testData } from './constants';
+import { filterOpts, kpi, truckIDs, testData } from './constants';
 
 const Analytics = () => {
     const [dateFilter, setDateFilter] = useState('');
@@ -47,9 +48,9 @@ const Analytics = () => {
                 </Col>
 
                 <Col span={3} className="date-wrapper">
-                    {date && 
+                    {date && dateFilter &&
                         <div className="date">
-                            <div class="month">APR</div>
+                            <div class="month">{moment(dateFilter, "YYYY-MM-DD").format("MMM")}</div>
                             <div class="day">{date.get("date")}</div>
                         </div>
                     }
@@ -70,7 +71,7 @@ const Analytics = () => {
                         onSelectionChanged={(s) => setFilter(s)}
                     />
                     {filter === filterOpts[0]
-                        ? <FilterDropdown text="Truck ID" />
+                        ? <FilterDropdown text="Truck ID" options={truckIDs}/>
                         : <FilterDropdown text="Type ID" />}
                 </Col>
                 <Col span={12}>
@@ -87,8 +88,6 @@ const Analytics = () => {
                 </Col>
 
                 <Col span={12} gutter={16} className="main-right">
-                    <StatusBar className="upper" />
-
                     <Row gutter={16} className="lower">
                         <Col span={12}>
                             <RouteCard title="best route" route={testData.bestRoute}/>
@@ -97,6 +96,8 @@ const Analytics = () => {
                             <RouteCard title="worst route" route={testData.worstRoute}/>
                         </Col>
                     </Row>
+
+                    <StatusBar className="upper" />
                 </Col>
             </Row>
         </Container>

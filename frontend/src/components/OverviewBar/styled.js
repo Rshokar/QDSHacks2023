@@ -7,11 +7,16 @@ export const StyledCard = styled(Card)`
     height: 100%;
     width: 100%;
 
+    .ant-card-body {
+        padding-left: 0;
+        padding-right: 2.5rem
+    }
+
     .section {
         text-align: right;
         
         .value {
-            font-size: clamp(1.5rem, 2vw, 2rem);
+            font-size: clamp(1.5rem, 1.75vw, 1.75rem);
             font-weight: 900;
         }
 

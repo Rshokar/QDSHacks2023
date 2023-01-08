@@ -1,5 +1,7 @@
 export const filterOpts = ['truck', 'truck type'];
 
+export const truckIDs = [1, 3, 4, 5, 9, 12, 13, 14, 15, 17, 18, 21, 22, 23, 25, 26, 27, 28];
+
 export const kpi = {
     "efficiency": {
         unit: "t / L",
