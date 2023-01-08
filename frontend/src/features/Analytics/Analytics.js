@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
 
-import { CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
+import Icon, { CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
 import { Row, Col } from 'antd';
 
 import dayjs from 'dayjs';
 import moment from 'moment';
+
+import { ReactComponent as Filter } from '../../assets/filter.svg';
+import { ReactComponent as Truck } from '../../assets/truck.svg';
 
 import TiltedButton from '../../components/TiltedButton';
 import StatCard from '../../components/StatCard';
@@ -74,9 +77,10 @@ const Analytics = () => {
                         text="Filter by"
                         options={filterOpts}
                         onSelectionChanged={(s) => setFilter(s)}
+                        icon={<Icon component={Filter} />}
                     />
                     {filter === filterOpts[0]
-                        ? <FilterDropdown text="Truck ID" options={truckIDs}/>
+                        ? <FilterDropdown text="Truck ID" options={truckIDs} icon={<Icon component={Truck}/>}/>
                         : <FilterDropdown text="Type ID" />}
                 </Col>
                 <Col span={12}>
