@@ -1,6 +1,8 @@
 import { useState } from "react";
 import AnalyticsIcon from '../../assets/analytics.png';
 import LampIcon from '../../assets/lamp.png';
+import { useNavigate } from "react-router";
+
 
 const NavBar = () => {
 
@@ -8,14 +10,23 @@ const NavBar = () => {
     const LAMP = 1;
 
     const [button, setButton] = useState(ANALYTICS);
+    const navigate = useNavigate();
+
 
     return <div style={style.container}>
         <div style={style.iconContainer}>
-            <div style={button === ANALYTICS ? style.selectedIcon : style.icon} onClick={() => setButton(ANALYTICS)}>
+            <div style={button === ANALYTICS ? style.selectedIcon : style.icon} onClick={() => {
+                navigate('/');
+                setButton(ANALYTICS);
+            }}>
                 <img style={style.img} src={AnalyticsIcon} />
             </div>
             <div style={button === LAMP ? style.selectedIcon : style.icon}>
-                <img style={style.img} src={LampIcon} onClick={() => setButton(LAMP)} />
+                <img style={style.img} src={LampIcon} onClick={() => {
+                    navigate('insights');
+                    setButton(LAMP);
+                }
+                } />
             </div>
         </div>
     </div>
