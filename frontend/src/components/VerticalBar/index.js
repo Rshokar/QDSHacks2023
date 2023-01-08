@@ -2,11 +2,11 @@ import { data01, data02, data03, data04 } from './test';
 import { StyledCard } from './styled';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Cell, Tooltip, Legend } from 'recharts';
 
-const CustomizedLabel = ({x, y, fill, value}) => {
+const CustomizedLabel = ({ x, y, fill, value }) => {
     return (
-        <text 
-            x={x} 
-            y={y} 
+        <text
+            x={x}
+            y={y}
             dx={5}
             dy={15}
             fill={"white"}
@@ -18,16 +18,16 @@ const CustomizedLabel = ({x, y, fill, value}) => {
     );
 };
 
-export const VerticalBar1 = ({data}) => {
+export const VerticalBar1 = ({ data }) => {
     return (
         <ResponsiveContainer width="100%" height="100%">
-            <BarChart 
-                data={data ? data : data01}
+            <BarChart
+                data={data}
                 barCategoryGap={0}
                 margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
-                <XAxis dataKey="name"/>
+                <XAxis dataKey="name" />
                 <YAxis />
-                <CartesianGrid strokeDasharray="3 3"/>
+                <CartesianGrid strokeDasharray="3 3" />
                 <Bar
                     dataKey="avg"
                     fill={`${process.env.REACT_APP_PRIMARY_COLOR}`}
@@ -43,16 +43,16 @@ export const VerticalBar1 = ({data}) => {
     );
 };
 
-export const VerticalBar2 = ({data}) => {
+export const VerticalBar2 = ({ data }) => {
     return (
         <ResponsiveContainer width="100%" height="100%">
-            <BarChart 
-                data={data ? data : data02}
+            <BarChart
+                data={data}
                 barCategoryGap={0}
                 margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
-                <XAxis dataKey="name"/>
+                <XAxis dataKey="name" />
                 <YAxis />
-                <CartesianGrid strokeDasharray="3 3"/>
+                <CartesianGrid strokeDasharray="3 3" />
                 <Bar
                     dataKey="avg"
                     fill={`${process.env.REACT_APP_PRIMARY_COLOR}`}
@@ -68,16 +68,16 @@ export const VerticalBar2 = ({data}) => {
     );
 };
 
-export const VerticalBar3 = ({data}) => {
+export const VerticalBar3 = ({ data }) => {
     return (
         <ResponsiveContainer width="100%" height="100%">
-            <BarChart 
-                data={data ? data : data03}
+            <BarChart
+                data={data}
                 barCategoryGap={0}
                 margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
-                <XAxis dataKey="name"/>
+                <XAxis dataKey="name" />
                 <YAxis />
-                <CartesianGrid strokeDasharray="3 3"/>
+                <CartesianGrid strokeDasharray="3 3" />
                 <Bar
                     dataKey="avg"
                     fill={`${process.env.REACT_APP_PRIMARY_COLOR}`}
@@ -93,16 +93,16 @@ export const VerticalBar3 = ({data}) => {
     );
 };
 
-export const VerticalBar4 = ({data}) => {
+export const VerticalBar4 = ({ data }) => {
     return (
         <ResponsiveContainer width="100%" height="100%">
-            <BarChart 
-                data={data ? data : data04}
+            <BarChart
+                data={data}
                 barCategoryGap={0}
                 margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
-                <XAxis dataKey="name"/>
+                <XAxis dataKey="name" />
                 <YAxis />
-                <CartesianGrid strokeDasharray="3 3"/>
+                <CartesianGrid strokeDasharray="3 3" />
                 <Bar
                     dataKey="avg"
                     fill={`${process.env.REACT_APP_PRIMARY_COLOR}`}
