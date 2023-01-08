@@ -5,6 +5,7 @@ import StatusPie from '../../components/StatusPie';
 import StatusBar from '../../components/StatusBar';
 import OverviewBar from '../../components/OverviewBar';
 import RouteCard from '../../components/RouteCard';
+import FilterDropdown from '../../components/FilterDropdown';
 
 import { Container } from './styled';
 
@@ -48,9 +49,9 @@ const Analytics = () => {
             </Row>
 
             <Row gutter={16}>
-                <Col span={12}>
-                    <div>Filter by Truck</div>
-                    <div>Truck ID</div>
+                <Col span={12} className="filter-group">
+                    {/* <FilterDropdown text="Filter by Truck" />
+                    <FilterDropdown text="Truck ID" /> */}
                 </Col>
                 <Col span={12}>
                     <OverviewBar/>
