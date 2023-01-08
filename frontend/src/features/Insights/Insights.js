@@ -1,6 +1,11 @@
+import { Container } from './styled';
+
 const Insights = () => {
 
-    return <div>Insights</div>
+    return (
+        <Container>
+        </Container>
+    )
 }
 
 export default Insights;
