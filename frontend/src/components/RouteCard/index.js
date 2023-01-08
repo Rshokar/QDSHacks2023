@@ -1,5 +1,3 @@
-import { testData } from './test';
-
 import { StyledCard } from './styled';
 
 
