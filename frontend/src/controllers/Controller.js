@@ -4,13 +4,13 @@ import { collection, query, where, doc } from "firebase/firestore";
 
 class Controller {
 
-    ROUTES_TABLE;
+    INSIGHTS;
     ANALYTICS_SUMMARY;
     ANALYTICS_TABLE;
     ANALYTICS_OVERALL;
 
     constructor() {
-        this.ROUTES_TABLE = "routes";
+        this.INSIGHTS = "insights";
         this.ANALYTICS_SUMMARY = "analytics_summary";
         this.ANALYTICS_TABLE = "analytics";
         this.ANALYTICS_OVERALL = "analytics_overall";
@@ -22,11 +22,11 @@ class Controller {
      * @param { Number | String } dumpId 
      * @returns undefined or a docuemnt
      */
-    async getRoutes(bucketId, dumpId) {
-        if (!bucketId || !dumpId)
-            throw Error("bucketId and dumpId is required");
+    async getInsights(shovelId, dumpId) {
+        if (!shovelId || !dumpId)
+            throw Error("shovelId and dumpId is required");
 
-        var docRef = doc(db, this.ROUTES_TABLE, "route_" + bucketId + dumpId);
+        var docRef = doc(db, this.INSIGHTS, "route_" + shovelId + "_" + dumpId);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
             return docSnap.data();
