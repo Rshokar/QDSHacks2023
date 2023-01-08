@@ -30,6 +30,7 @@ const Analytics = () => {
     const [date, setDate] = useState(null);
     const [globalData, setGlobalData] = useState(null);
     const [localData, setLocalData] = useState(testData.kpi);
+    const [barData, setBarData] = useState(null);
 
     useEffect(() => {
         // TODO:
@@ -79,6 +80,7 @@ const Analytics = () => {
             console.log(result);
             setLocalData(result);
         }
+
         run();
 
     }, [id]);
@@ -109,27 +111,30 @@ const Analytics = () => {
                     value: round(docs.fuel_rate.min),
                 }
             ]
-
             setGlobalData(result);
+
+
+
+
         }
 
         run();
     }, [dateFilter]);
 
-    useEffect(() => {
-        // Filter igonore
+    // useEffect(() => {
+    //     // Filter igonore
 
-        // id truck_id
+    //     // id truck_id
 
-        // dateFilter date
+    //     // dateFilter date
 
-        const run = async () => {
-            const documents = await con.getAnalytics(id, dateFilter);
-            console.log(documents);
-        }
+    //     const run = async () => {
+    //         const documents = await con.getAnalytics(id, dateFilter);
+    //         console.log(documents);
+    //     }
 
-        run();
-    }, [filter, dateFilter, id]);
+    //     run();
+    // }, [filter, dateFilter, id]);
 
     const renderGlobalStats = (data) => data.map((d) => {
         return (
