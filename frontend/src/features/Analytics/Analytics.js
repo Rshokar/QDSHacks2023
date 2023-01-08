@@ -1,5 +1,7 @@
-const Analytics = () => {
+import AnalyticsController from "../../controllers/AnalyticsController";
 
+
+const Analytics = () => {
     return <div>Analytics</div>
 }
 

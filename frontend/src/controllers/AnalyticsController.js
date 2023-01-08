@@ -1,6 +1,7 @@
-
+import { db } from "../firebase";
 
 class AnalyticsController {
+
 
 }
 
