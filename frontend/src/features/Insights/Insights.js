@@ -87,18 +87,6 @@ const Insights = () => {
 
             <Row gutter={16} style={{paddingBottom: "16px"}}>
                 <Col span={6}>
-                    <TiltedHeader text="average" />
-                </Col>
-
-                <Col span={18}>
-                    <Row gutter={16}>
-                        {renderStats(testData.kpi)}
-                    </Row>
-                </Col>
-            </Row>
-
-            <Row gutter={16}>
-                <Col span={6}>
                     <TiltedHeader text="projected" />
                 </Col>
 
