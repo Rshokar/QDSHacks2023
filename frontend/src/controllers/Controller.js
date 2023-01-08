@@ -1,6 +1,6 @@
-import { getDocs } from "firebase/firestore";
+import { getDoc, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
-import { collection, query, where, } from "@firebase/firestore";
+import { collection, query, where, doc } from "firebase/firestore";
 
 class Controller {
 
@@ -18,13 +18,22 @@ class Controller {
     /**
      * @param { Number | undefined } truckId 
      * @param { String | undefined } date 
-     * @returns 
+     * @returns undefined or a docuemnt
      */
     async getRoutes(bucketId, dumpId) {
-        // var q = query(collection(db, this.ROUTES_TABLE + "/route_" + bucketId + dumpId + '/'));
-        // return await this.makeQuery(q);
+        var docRef = doc(db, this.ROUTES_TABLE, "route_" + bucketId + dumpId);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+            return docSnap.data();
+        }
+        return undefined;
     }
 
+    /**
+ * @param { Number | undefined } truckId 
+ * @param { String | undefined } date 
+ * @returns An array of found docuemnts
+ */
     async getAnalytics(truckId, date) {
         var q = query(collection(db, this.ANALYTICS_TABLE));
 
