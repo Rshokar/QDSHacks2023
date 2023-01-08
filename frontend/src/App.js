@@ -16,7 +16,7 @@ function App() {
   const con = new Controller();
   useEffect(() => {
     const run = async () => {
-      const documents = await con.getRoutes(1, 7);
+      const documents = await con.getAnalyticsSummary("2022-04-03");
       console.log(documents);
     }
     run();

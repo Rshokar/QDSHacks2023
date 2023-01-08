@@ -21,6 +21,10 @@ class Controller {
      * @returns undefined or a docuemnt
      */
     async getRoutes(bucketId, dumpId) {
+
+        if (!bucketId || !dumpId)
+            throw Error("BucketId and DumpId is required");
+
         var docRef = doc(db, this.ROUTES_TABLE, "route_" + bucketId + dumpId);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
@@ -48,6 +52,24 @@ class Controller {
         return await this.makeQuery(q);
     }
 
+    /**
+     * @param { String } date 
+     * @returns docuemnt or undefined
+     */
+    async getAnalyticsSummary(date) {
+
+        if (!date)
+            throw Error("Date is a required field");
+
+        var docRef = doc(db, this.ANALYTICS_SUMMARY, date);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+            return docSnap.data();
+        }
+        return undefined;
+    }
+
     _getTruckIdQuery(truckId) {
         return query(collection(db, this.ANALYTICS_TABLE), where("TRUCK_ID", "==", truckId))
     }
@@ -55,9 +77,6 @@ class Controller {
     _getTruckIdAndDateQuery(truckId, date) {
         return query(collection(db, this.ANALYTICS_TABLE), where("TRUCK_ID", "==", truckId), where("LOAD_DATE", "==", date))
     }
-
-
-
 
     async makeQuery(query) {
 
