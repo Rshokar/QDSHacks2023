@@ -97,7 +97,9 @@ const Analytics = () => {
                 </Col>
 
                 <Col span={12} gutter={16} className="main-right">
-                    <Row gutter={16} className="upper">
+                    <HorizontalBar className="upper" />
+
+                    <Row gutter={16} className="lower">
                         <Col span={12}>
                             <RouteCard 
                                 title="best route"
@@ -106,6 +108,7 @@ const Analytics = () => {
                                 color="#198754"
                             />
                         </Col>
+                        
                         <Col span={12}>
                             <RouteCard
                                 title="worst route"
@@ -116,7 +119,7 @@ const Analytics = () => {
                         </Col>
                     </Row>
 
-                    <HorizontalBar className="lower" />
+                    
                 </Col>
             </Row>
         </Container>
