@@ -87,8 +87,4 @@ By incorporating all these features, Trucker Tool equips Teck Resources with a c
 
 ## Contact Information
 
-- Bradley Masciotra - bmasciotra@my.bcit.ca
-- Monica Bacatan - mbacatan1@my.bcit.ca
-- Ravinder Shokar - rshokar2@my.bcit.ca
-- Ryan Odribege - rodribege@my.bcit.ca
-- Stan Hung - shung29@my.bcit.ca
+- Ravinder Shokar: ravindershokar@gmail.com
