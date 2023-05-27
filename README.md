@@ -49,9 +49,7 @@ By incorporating all these features, Trucker Tool equips Teck Resources with a c
 
 - Have a Git and GitHub account
 
-### Configuration instructions:
-
-#### Cloning the repository:
+### Cloning the repository:
 
 - Open Command Prompt
 - `cd` into the folder you want the repository stored in
@@ -72,7 +70,6 @@ By incorporating all these features, Trucker Tool equips Teck Resources with a c
 ### Features
 
 #### Basic Analytics
-
 - Select a Truck Id
 - View the top row of analytics
 - The bar chart idicates average stats at different stages
@@ -81,7 +78,7 @@ By incorporating all these features, Trucker Tool equips Teck Resources with a c
   - Loaded
 - At the very bottom indicates that trucks best and worst route. 
 
-### Truckin' Sights
+#### Truckin' Sights
 - Select a shovel id
 - Select a dump id
 - The UI will indicate searching
