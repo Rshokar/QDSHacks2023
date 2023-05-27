@@ -61,8 +61,7 @@ By incorporating all these features, Trucker Tool equips Teck Resources with a c
 2. `cd` into the folder where the code is stored
 3. Type: `npm start`
 4. Wait a couple seconds until you see 'webpack compiled successfully'
-<br>
-![image](https://github.com/Rshokar/QDSHacks2023/assets/60485121/1d89ae99-b6f8-45ac-a739-2c3eb1e7c51f)
+5. A web page on your default browser will open, with the basic analytics page open
 <br>
 
 ## <a id="how-to-use-product">How to use the product (Features)</a>
@@ -70,21 +69,20 @@ By incorporating all these features, Trucker Tool equips Teck Resources with a c
 ### Features
 
 #### Basic Analytics
-- Select a Truck Id
-- View the top row of analytics
-- The bar chart idicates average stats at different stages
-  - Light Blue: idle
-  - Green: Empty
-  - Loaded
-- At the very bottom indicates that trucks best and worst route. 
+- Select a Truck ID from the dropdown menu.
+- The top row of analytics will display key statistics.
+- The bar chart represents average stats at different stages:
+ - Light Blue: Idle
+ - Green: Empty
+ - Dark Blue: Loaded
+- The bottom section indicates the best and worst routes for the selected truck.
 
 #### Truckin' Sights
-- Select a shovel id
-- Select a dump id
-- The UI will indicate searching
-- An Truck id will be shown
-- Basic analytics will be shown bellow
-
+- Select a shovel ID from the dropdown menu.
+- Select a dump ID from the dropdown menu.
+- The UI will indicate that it is searching for the optimal truck.
+- The recommended Truck ID will be displayed.
+- Basic analytics for the recommended truck will be shown below.
 <br>
 
 ## Contact Information
