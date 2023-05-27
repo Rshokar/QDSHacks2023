@@ -18,10 +18,11 @@ Trucker Tool is an innovative application developed during the QDSHacks 2023 hac
 
 Our primary objective was to create a user-friendly application that provides essential fuel consumption statistics for trucks used in mining operations. The key metrics include:
 
-Tons per litre
-Hours per round
-Tons per round
-Litres per hour
+- Tons per litre
+- Hours per round
+- Tons per round
+- Litres per hour
+
 Efficiency is measured by the ratio of tonnage to fuel consumption. By tracking this data, we aim to enable Teck Resources to make informed decisions and enhance their fuel usage strategies.
 
 The application boasts a range of features designed to maximize fuel efficiency and operational productivity. One such feature is the ability to analyze the percentage of time a truck spends in different statuses, including non-productive, loading, dumping, empty, and hauling. By identifying and optimizing the time spent in high-efficiency hauling operations, we can reduce fuel consumption and idle time.
