@@ -63,111 +63,30 @@ By incorporating all these features, Trucker Tool equips Teck Resources with a c
 2. `cd` into the folder where the code is stored
 3. Type: `npm start`
 4. Wait a couple seconds until you see 'webpack compiled successfully'
+<br>
 ![image](https://github.com/Rshokar/QDSHacks2023/assets/60485121/1d89ae99-b6f8-45ac-a739-2c3eb1e7c51f)
-
-
 <br>
 
 ## <a id="how-to-use-product">How to use the product (Features)</a>
 
 ### Features
 
-#### Login
+#### Basic Analytics
 
-- To login, you will need to enter your email and password.
-- <b>Note:</b> the email and password are required fields.
-- Once you have entered your information, click the <i>Submit</i> button
+- Select a Truck Id
+- View the top row of analytics
+- The bar chart idicates average stats at different stages
+  - Light Blue: idle
+  - Green: Empty
+  - Loaded
+- At the very bottom indicates that trucks best and worst route. 
 
-#### Create an entity
-
-- Open the left navbar.
-  - The left navbar can be opened by clicking the arrow icon in the top left corner of the screen.
-- Expand the <i>Create</i> dropdown.
-- Click on one of the entities.
-- Fill in the required fields, and any optional fields if needed.
-- <b>Note:</b> required fields are marked with an asterisk.
-- Click the <i>Submit</i> button.
-- A message will appear indicating whether the creation was successful or not.
-
-#### Query an entity
-
-- Open the left navbar.
-- Expand the <i>Query</i> dropdown.
-- Click on one of the entities.
-- Fill in the required fields, and any optional fields if needed.
-- <b>Note:</b> required fields are marked with an asterisk.
-- Click the <i>Submit</i> button.
-- A component will appear with a list of entities based on the query.
-
-#### Edit an entity
-
-- Follow the steps for how to query an entity.
-- A component will appear with a list of entities based on the query from the previous step.
-- To edit one of the entities, click the blue pencil icon.
-- Update any of the fields.
-- <b>Note:</b> required fields are marked with an asterisk and cannot be empty.
-- Click the <i>Submit</i> button.
-- The component with the list will be updated.
-
-#### Delete an entity
-
-- Follow the steps for how to query an entity.
-- A component will appear with a list of entities based on the query from the previous step.
-- To delete one of the entities, click the red garbage can icon.
-- Confirm that you would like to delete this entity by clicking the <i>Delete</i> button.
-- The entity will no longer be in the component with the list.
-
-### View 1 to many relationships between entities
-#### View all Conduits in a Duct
-- Query a list of Ducts.
-    - To query Ducts, follow the steps for how to query an entity.
-- A component will appear with a list of Ducts based on the query.
-- To view all Conduits in a specific Duct, left click on a Duct in the list.
-    - <b>Note:</b> when you click on a Duct, it will be highlighted in light grey.
-- A new component will appear with a list of Conduits for that specific Duct.
-
-#### View all Wire Types in a Conduit
-- Query a list of Conduits.
-    - To query Conduits, follow the steps for how to query an entity.
-- A component will appear with a list of Conduits based on the query.
-- To view all Wire Types in a specific Conduit, left click on a Conduit in the list.
-- A new component will appear with a list of Wire Types for that specific Conduit.
-
-#### View visual data for all Conduits in a Duct
-- Query a list of Ducts.
-- A component will appear with a list of Ducts based on the query.
-- To view visual data for Conduits in a specific Duct, left click and hold your mouse down for 1 second on a Duct in the list.
-    - <b>Note:</b> when you hold your mouse down on a Duct, it will be highlighted in blue.
-- A new component will appear with a list of Conduits for that specific Duct, a graphic for that Duct, and a list of Block Ranges.
-- The graphic contains information about that Duct, including its install date, length, and depth.
-- The list of Block Ranges has 2 categories: Current and Available. Block Ranges can be clicked and moved between those categories.
-
-#### View visual data for all Wire Types in a Conduit
-- Query a list of Conduits.
-- A component will appear with a list of Conduits based on the query.
-- To view visual data for Wire Types in a specific Conduit, left click and hold your mouse down for 1 second on a Conduit in the list.
-    - <b>Note:</b> when you hold your mouse down on a Conduit, it will be highlighted in blue.
-- A new component will appear with a list of Wire Types for that specific Conduit.
-- The list of Wire Types has 2 categories: Current and Available. Wire Types can be clicked and moved between those categories.
-
-### Top navbar icons
-
-#### Help icon (question mark symbol)
-
-The help icon is for getting instructions on how to use the application.
-
-- Click the help icon in the top navbar.
-- A popup will appear with dropdowns about how to use the application.
-- Expand a dropdown to view step by step instructions on a particular feature.
-- To close the popup, click the <i>Ok</i> button.
-
-#### Settings icon (gear symbol)
-
-The help icon is for logging out.
-
-- Click the settings icon in the top navbar.
-- A dropdown will expand under the icon.
-- Click the <i>Logout</i> button to go back to the login page.
+### Truckin' Sights
+- Select a shovel id
+- Select a dump id
+- The UI will indicate searching
+- An Truck id will be shown
+- Basic analytics will be shown bellow
 
 <br>
 
