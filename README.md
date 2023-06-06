@@ -59,9 +59,11 @@ By incorporating all these features, Trucker Tool equips Teck Resources with a c
 
 1. Open Command Prompt
 2. `cd` into the folder where the code is stored
-3. Type: `npm start`
-4. Wait a couple seconds until you see 'webpack compiled successfully'
-5. A web page on your default browser will open, with the basic analytics page open
+3. change directory to frontend `cd frontend`
+4. Type: `npm install`
+5. Type: `npm start`
+6. Wait a couple seconds until you see 'webpack compiled successfully'
+7. A web page on your default browser will open, with the basic analytics page open
 <br>
 
 ## <a id="how-to-use-product">How to use the product (Features)</a>
